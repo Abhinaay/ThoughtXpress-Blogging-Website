@@ -33,6 +33,7 @@ public class AuthService {
 	@Autowired
 	private JwtProvider jwtProvider;
 	
+	
 	public void signup(RegisterRequest registerRequest) {
 		
 		User user=new User();
@@ -48,12 +49,15 @@ public class AuthService {
 		return passwordEncoder.encode(password);
 	}
 
-	public String login(LoginRequest loginrequest) {
+	public AuthenticationResponse login(LoginRequest loginrequest) {
 		Authentication authenticate=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginrequest.getUsername(),
 				loginrequest.getPassword()));
 		
 		SecurityContextHolder.getContext().setAuthentication(authenticate);
-		return jwtProvider.generateToken(authenticate);
+		AuthenticationResponse aR = new AuthenticationResponse();
+		aR.setAuthenticationToken(jwtProvider.generateToken(authenticate));
+		aR.setUsername(loginrequest.getUsername());
+		return aR;
 	}
 
 	public Optional<org.springframework.security.core.userdetails.User> getCurrentUser() {

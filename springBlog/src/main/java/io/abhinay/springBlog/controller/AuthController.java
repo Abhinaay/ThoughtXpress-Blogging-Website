@@ -3,6 +3,7 @@ package io.abhinay.springBlog.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import io.abhinay.springBlog.dto.LoginRequest;
 import io.abhinay.springBlog.dto.RegisterRequest;
 import io.abhinay.springBlog.service.AuthService;
+import io.abhinay.springBlog.service.AuthenticationResponse;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/auth")
 public class AuthController {
 	
@@ -28,7 +31,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/login")
-	public String login(@RequestBody LoginRequest loginrequest) {
+	public AuthenticationResponse login(@RequestBody LoginRequest loginrequest) {
 		
 		return authService.login(loginrequest);
 	}
