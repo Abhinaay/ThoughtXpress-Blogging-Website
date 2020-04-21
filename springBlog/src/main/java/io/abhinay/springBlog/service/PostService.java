@@ -7,11 +7,13 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import io.abhinay.springBlog.dto.PostDto;
 import io.abhinay.springBlog.exception.PostNotFoundException;
 import io.abhinay.springBlog.model.Post;
 import io.abhinay.springBlog.repository.PostRepository;
+
 
 @Service
 public class PostService {

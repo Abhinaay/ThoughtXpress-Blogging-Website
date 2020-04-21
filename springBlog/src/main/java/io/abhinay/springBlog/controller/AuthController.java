@@ -14,8 +14,8 @@ import io.abhinay.springBlog.dto.RegisterRequest;
 import io.abhinay.springBlog.service.AuthService;
 import io.abhinay.springBlog.service.AuthenticationResponse;
 
+
 @RestController
-@CrossOrigin
 @RequestMapping("/api/auth")
 public class AuthController {
 	

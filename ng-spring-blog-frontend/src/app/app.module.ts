@@ -10,12 +10,17 @@ import { RegisterSuccessComponent } from './auth/register-success/register-succe
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {setupTestingRouter} from '@angular/router/testing';
 import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Ng2Webstorage} from 'ngx-webstorage';
 import { HomeComponent } from './home/home.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import {HttpClientInterceptor} from './http-client-interceptor';
+import { PostComponent } from './post/post.component';
+import {AuthGuard} from './auth.guard';
+
+
+
 
 
 @NgModule({
@@ -26,7 +31,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     LoginComponent,
     RegisterSuccessComponent,
     HomeComponent,
-    AddPostComponent
+    AddPostComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -35,17 +41,18 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ReactiveFormsModule,
     Ng2Webstorage.forRoot(),
     RouterModule.forRoot([
+      {path: '', component: HomeComponent},
       {path: 'register', component: RegisterComponent},
+      {path: 'post/:id', component: PostComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register-success', component: RegisterSuccessComponent},
       {path: 'home', component: HomeComponent},
-      {path: 'add-post', component: AddPostComponent}
+      {path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard]}
     ]),
     HttpClientModule,
-    EditorModule,
-    CKEditorModule
+    EditorModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

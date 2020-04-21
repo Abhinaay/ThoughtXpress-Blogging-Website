@@ -21,15 +21,19 @@ export class AuthService {
   }
 
   login(loginPayload: LoginPayload): Observable<boolean> {
-    // @ts-ignore
     return this.httpClient.post<JwtAuthResponse>(this.url + 'login', loginPayload).pipe(map(data => {
       this.localStorageService.store('authenticationToken', data.authenticationToken);
       this.localStorageService.store('username', data.username);
       return true;
     }));
   }
-
-  isAuthenticated(): boolean {
+  // tslint:disable-next-line:ban-types
+  isAuthenticated(): Boolean{
     return this.localStorageService.retrieve('username') != null;
 }
+
+  logout() {
+    this.localStorageService.clear('authenticationToken');
+    this.localStorageService.clear('username');
+  }
 }
