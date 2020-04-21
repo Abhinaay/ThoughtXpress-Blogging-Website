@@ -21,11 +21,13 @@
     "@angular/router": "~9.1.1",
     "@ckeditor/ckeditor5-angular": "^1.2.3",
     "@ckeditor/ckeditor5-build-classic": "^18.0.0",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@kolkov/angular-editor": "^1.1.2",
     "@tinymce/tinymce-angular": "^3.5.0",
     "angular-froala-wysiwyg": "^3.1.0",
     "bootstrap": "^4.4.1",
     "ckeditor4-angular": "^1.1.0",
+    "material-design-icons": "^3.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

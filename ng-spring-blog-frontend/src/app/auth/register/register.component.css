@@ -1,0 +1,36 @@
+.card {
+  padding: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+  margin-top: 10vh;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+/* Style the form icons */
+.icon {
+  padding: 13px;
+  background: #fff;
+  color: dodgerblue;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Style the input container */
+.form-group {
+  display: flex;
+  width: 100%;
+}
+
+.register-title {
+  font-family: "Comic Sans MS";
+  text-align: center;
+}

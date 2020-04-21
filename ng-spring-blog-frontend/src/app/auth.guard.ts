@@ -17,7 +17,7 @@ canActivate(
     if (isAuth){
       return true;
     } else {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/hero');
     }
   }
 

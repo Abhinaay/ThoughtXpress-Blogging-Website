@@ -1,0 +1,38 @@
+.hero-body {
+  height: 88vh;
+  background: #f1f1f1;
+  overflow: hidden;
+}
+
+.hero-image {
+  height: 80vh;
+  width: 40vw;
+  display: block;
+  margin-right: auto;
+  margin-left: 0;
+
+}
+ .hero-quote {
+    height: 80vh;
+    width: 65vw;
+    display: block;
+    margin-right: auto;
+    margin-left: 0;
+
+  }
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: #f1f1f1;
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: right;
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.hero-div1:hover .overlay {
+  opacity: 1;
+}

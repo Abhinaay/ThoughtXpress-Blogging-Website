@@ -1,22 +1,50 @@
 .header {
-    padding: 5px 20px;
-    background: royalblue;
+  position: sticky;
+  background: #f1f1f1;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 3px;
 }
 
 .title {
-    color: aliceblue;
+    color: #19181A;
     text-decoration: none;
+
 }
 
-.login, .register {
+.img-responsive {
+  width: 20vw;
+  height: 8vh;
+
+}
+
+.login {
     float: right;
-    color: aliceblue;
+    color: #19181A;
     text-decoration: none;
-    padding-top: 10px;
+    font-weight: bolder;
+    margin-top: 17px;
+}
+.register {
+  float: right;
+  color: #19181A;
+  text-decoration: none;
+  font-weight: bolder;
+  margin-top: 17px;
+  margin-right: 10px;
 }
 
-.logout, .new-post {
+.logout {
   float: right;
-  color: aliceblue;
-  padding-top: 10px;
+  color: #19181A;
+  font-weight: bolder;
+  margin-top: 17px;
+
+}
+.new-post {
+  float: right;
+  color: #19181A;
+  font-weight: bolder;
+  margin-top: 17px;
+  margin-right: 10px;
 }
