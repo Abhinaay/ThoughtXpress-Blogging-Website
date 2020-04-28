@@ -1,17 +1,35 @@
+<div class="login-body">
 <div class="container justify-content-center">
+  <div class="card">
   <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-    <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+    <h1 class="h3 mb-4 login-title">Please provide your credentials...</h1>
+    <div id="login-failed" class="invalid-feedback modal-content modal-body" style="display: none">
+      <div>Login Failed!! Try again with proper credentials...</div>
+    </div>
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback modal-content modal-body" id="error1">
+      <div  *ngIf="f.username.errors.required">Username is required</div>
+    </div>
     <div class="form-group">
       <label for="inputUsername" class="sr-only">Username</label>
-      <input type="text" id="inputUsername" [formControlName]="'username'" class="form-control" placeholder="Username" required="" autofocus="">
+      <span class="fa fa-user icon"></span>
+      <input type="text" id="inputUsername" [formControlName]="'username'" class="form-control" placeholder="Username" required="" autofocus="" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
     </div>
-
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback modal-content modal-body" id="error3">
+      <div *ngIf="f.password.errors.required">Password is required</div>
+    </div>
     <div class="form-group">
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" [formControlName]="'password'" class="form-control" placeholder="Password" required="" autofocus="">
+      <i (click)="password()" class="fa fa-eye icon"></i>
+      <input [type]="show ? 'text' : 'password'" type="password" id="inputPassword" [formControlName]="'password'" class="form-control" placeholder="Password" required="" autofocus="" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
     </div>
 
     <button class="btn btn-lg btn btn-primary btn-block" type="submit">Sign In</button>
   </form>
+  <br>
+    <div class="forgot-password">
+      <p>Forgot Password? <a href="">Click Here</a></p>
+    </div>
 
+  </div>
+</div>
 </div>

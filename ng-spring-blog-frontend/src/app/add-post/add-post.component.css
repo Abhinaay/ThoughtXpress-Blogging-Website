@@ -1,13 +1,75 @@
 
+.card {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+  margin-top: 2vh;
+  border: none;
+  cursor: pointer;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+}
+.hr-add-post {
+  margin-top: 0px;
+  width: 40vw;
+  background: lightgrey;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .add-post-content {
   padding-top: 20px;
+  background: linear-gradient(180deg, #f1f1f1 0%, #1fc8db 51%, #f1f1f1 85%);
+  height: 100%;
 }
 
+.container {
+  background: linear-gradient(180deg, #f1f1f1 0%, #1fc8db 51%, #f1f1f1 85%);
+  padding-left: 0;
+  padding-right: 0;
+
+}
 .new-post-title {
-  color: royalblue;
+  color: #1fc8db;
+  font-family: "Pristina";
+  text-align: center;
+  font-weight: bolder;
+  font-size: 8vh;
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .new-post-title {
+    color: #1fc8db;
+    font-size: 10vw;
+  }
+  .card {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+    transition: 0.3s;
+    margin-top: 2vh;
+    margin-right: 3vw;
+    margin-left: 3vw;
+    border: none;
+  }
 }
 
 .post-content, .post-title {
-  color: royalblue;
+  color: #2e3034;
 }
+
+.btn {
+  background: #1fc8db;
+  border: none;
+}
+

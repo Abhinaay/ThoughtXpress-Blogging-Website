@@ -1,50 +1,112 @@
+
 .header {
   position: sticky;
   background: #f1f1f1;
   width: 100%;
   padding-top: 5px;
   padding-bottom: 3px;
+
+}
+.large-screen-header {
+  display: block;
+}
+.small-screen-header {
+  display: none;
 }
 
+
 .title {
-    color: #19181A;
+    color: #006678;
     text-decoration: none;
 
 }
 
 .img-responsive {
   width: 20vw;
-  height: 8vh;
-
+  height: 10vh;
 }
+
 
 .login {
     float: right;
-    color: #19181A;
+    color: #2e3034;
     text-decoration: none;
     font-weight: bolder;
-    margin-top: 17px;
+    margin-top: 1.5vh;
 }
+
+.login:hover, .register:hover, .logout:hover, .new-post:hover {
+  background: #4FA8FF;
+  color: #f1f1f1;
+}
+
 .register {
   float: right;
-  color: #19181A;
+  color: #2e3034;
   text-decoration: none;
   font-weight: bolder;
-  margin-top: 17px;
+  margin-top: 1.5vh;
   margin-right: 10px;
 }
 
 .logout {
   float: right;
-  color: #19181A;
+  color: #2e3034;
   font-weight: bolder;
-  margin-top: 17px;
+  margin-top: 1.5vh;
 
 }
 .new-post {
   float: right;
-  color: #19181A;
+  color: #2e3034;
   font-weight: bolder;
-  margin-top: 17px;
+  margin-top: 1.5vh;
   margin-right: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+
+  .large-screen-header {
+    display: none;
+  }
+  .small-screen-header {
+    display: block;
+  }
+
+  .img-responsive {
+    width: 90vw;
+    height: 10vh;
+  }
+
+  a {
+    width: 44vw;
+    display: grid;
+    margin-right: 1vw;
+
+  }
+
+
+  .login {
+    float: right;
+    color: #2e3034;
+    text-decoration: none;
+    font-weight: bolder;
+    margin-top: 1.5vh;
+  }
+
+
+  .register {
+    float: right;
+    color: #2e3034;
+    text-decoration: none;
+    font-weight: bolder;
+    margin-top: 1.5vh;
+    margin-right: 10px;
+  }
+}
+
+.btn:hover {
+  border: none;
+  background: #1fc8db;
 }

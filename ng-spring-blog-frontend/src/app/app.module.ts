@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {setupTestingRouter} from '@angular/router/testing';
 import {RouterModule} from '@angular/router';
@@ -19,9 +18,8 @@ import {HttpClientInterceptor} from './http-client-interceptor';
 import { PostComponent } from './post/post.component';
 import {AuthGuard} from './auth.guard';
 import { HeroComponent } from './hero/hero.component';
-
-
-
+import {Auth1Guard} from './auth1.guard';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -30,11 +28,11 @@ import { HeroComponent } from './hero/hero.component';
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
-    RegisterSuccessComponent,
     HomeComponent,
     AddPostComponent,
     PostComponent,
-    HeroComponent
+    HeroComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,12 +41,11 @@ import { HeroComponent } from './hero/hero.component';
     ReactiveFormsModule,
     Ng2Webstorage.forRoot(),
     RouterModule.forRoot([
-      {path: 'hero', component: HeroComponent},
+      {path: 'hero', component: HeroComponent, canActivate: [Auth1Guard]},
       {path: '', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'register', component: RegisterComponent},
       {path: 'post/:id', component: PostComponent, canActivate: [AuthGuard]},
-      {path: 'login', component: LoginComponent},
-      {path: 'register-success', component: RegisterSuccessComponent},
+      {path: 'login', component: LoginComponent, canActivate: [Auth1Guard]},
       {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard]}
     ]),

@@ -9,6 +9,13 @@ public class AuthenticationResponse {
 	
 	private String authenticationToken;
 	private String username;
+	private boolean status;
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	public String getAuthenticationToken() {
 		return authenticationToken;
 	}

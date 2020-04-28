@@ -1,10 +1,11 @@
 
 <div class="add-post-content">
   <div class="container">
+    <div class="card">
     <div>
       <h3 class="new-post-title">Create New Post</h3>
     </div>
-    <hr>
+    <hr class="hr-add-post">
     <form [formGroup]="addPostForm" (ngSubmit)="addPost()">
       <div class="form-group">
         <label class="post-title">Title</label>
@@ -12,12 +13,15 @@
       </div>
       <div class="form-group">
         <label class="post-content">Body</label>
-        <editor [formControlName]="'body'" [init]="{plugins: 'link image emoticons lists imagetools hr insertdatetime media  advlist paste preview table toc visualblocks autolink charmap' }"></editor>
+        <editor [formControlName]="'body'" [init]="{plugins: 'link image emoticons lists imagetools hr insertdatetime media  advlist paste preview table toc visualblocks autolink charmap', height: '480' }"></editor>
 
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Post</button>
       </div>
     </form>
+    </div>
+    <br>
   </div>
 </div>
+

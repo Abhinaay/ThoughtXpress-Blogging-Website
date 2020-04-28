@@ -1,17 +1,20 @@
+
 <div class="content">
   <div class="container">
     <div class="row">
       <div class="col-md-1"></div>
-      <div class="col-md-8">
+      <div class="col-md-10">
+
         <h1 class="blog-title">{{post.title}}</h1>
+
         <span>
-          <p>by {{post.username}}</p>
+          <p class="author-name"><b>Author:</b> &nbsp; {{post.username}}</p>
         </span>
         <hr>
-        <p [innerHTML]="post.content"></p>
+        <p class="post-content" [innerHTML]="post.content" ></p>
         <hr>
       </div>
     </div>
   </div>
-
+  <a href="/home" class="back-to-home"><span>HOME</span></a>
 </div>

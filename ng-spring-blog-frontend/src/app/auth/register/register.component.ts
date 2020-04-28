@@ -1,8 +1,11 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterPayload} from '../register-payload';
 import {AuthService} from '../auth.service';
-import {Router, RouterModule} from '@angular/router';
+import {Router} from '@angular/router';
+import * as $ from 'jquery';
+
+
 
 
 @Component({
@@ -14,42 +17,74 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   registerPayload: RegisterPayload;
+  submitted = false;
+  show: boolean;
+
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router) {
 
+    this.show = false;
     this.registerForm = this.formBuilder.group({
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern('^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$')]],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]],
     });
 
     this.registerPayload = {
       username: '',
       email: '',
       password: '',
-      confirmPassword: ''
     };
   }
 
-  ngOnInit()   {
+  ngOnInit() {
+  }
+
+// convenience getter for easy access to form fields
+  get f() {
+    return this.registerForm.controls;
   }
 
   onSubmit() {
+
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
     this.registerPayload.username = this.registerForm.get('username').value;
     this.registerPayload.email = this.registerForm.get('email').value;
     this.registerPayload.password = this.registerForm.get('password').value;
-    this.registerPayload.confirmPassword = this.registerForm.get('confirmPassword').value;
 
     this.authService.register(this.registerPayload).subscribe(data => {
-      console.log('register success');
-      this.router.navigateByUrl('/register-success');
-    }, error => {
-      console.log('register failed');
+      if (data === 0) {
+        console.log('register success');
+        $(document).ready(($function) => {
+          setTimeout(() => {
+            this.router.navigateByUrl('/hero');
+          }, 5000);
+        });
+        document.getElementById('register-success').style.display = 'block';
+      }
+      else if (data === 1) {
+        console.log('Username Not Available');
+        document.getElementById('error4').style.display = 'block';
+      }
+      else {
+        console.log('register failed');
+      }
     });
   }
+
+  password() {
+    this.show = !this.show;
+  }
+
+  hideError4() {
+    document.getElementById('error4').style.display = 'none';
+  }
+
 }

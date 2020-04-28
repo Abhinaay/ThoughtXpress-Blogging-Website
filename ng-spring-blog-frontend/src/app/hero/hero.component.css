@@ -33,6 +33,33 @@
 }
 
 /* When you mouse over the container, fade in the overlay title */
-.hero-div1:hover .overlay {
+.hero-div1:hover .hero-div3:hover .overlay {
   opacity: 1;
+}
+
+.hero-div3 {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .hero-quote {
+    display: none;
+  }
+
+  .hero-div1 {
+    display: none;
+  }
+
+  .hero-div3 {
+    display: block;
+  }
+  .hero-image1 {
+    height: 70vh;
+    width: 100vw;
+    display: block;
+
+  }
+  .hero-body {
+    height: 65vh;
+  }
 }

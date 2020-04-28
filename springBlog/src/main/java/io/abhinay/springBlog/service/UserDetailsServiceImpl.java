@@ -3,6 +3,7 @@ package io.abhinay.springBlog.service;
 import java.util.Collection;
 import java.util.Collections;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -34,5 +35,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		
 		return Collections.singletonList(new SimpleGrantedAuthority(role_user));
 	}
+	
+	
+	
 
 }

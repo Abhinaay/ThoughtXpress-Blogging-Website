@@ -1,19 +1,36 @@
 <div class="header">
     <div class="container">
+      <div class="large-screen-header">
         <div class="row">
             <div class="col-md-6">
-                <h1><a href="" class="title"><img class="img-responsive" src="assets/img/logo.png"></a></h1>
+                <a href="" class="title"><img class="img-responsive" src="assets/img/logo3.png"></a>
             </div><!--Title-->
             <div class="col-md-6" *ngIf="authService.isAuthenticated()">
-                <button class="logout btn btn-outline-primary btn-sm" (click)="logout()">Logout</button>
-              <a href="/add-post" class="new-post btn btn-outline-primary btn-sm">Add Post</a>
+              <a class="logout btn btn-outline-dark btn-md" (click)="logout()">Logout</a>
+              <a href="/add-post" class="new-post btn btn-outline-dark btn-md">Add Post</a>
             </div><!-- Add post -->
             <div class="col-md-6" *ngIf="!authService.isAuthenticated()">
-                <a href="/login" class="login btn btn-outline-primary btn-sm">Login</a>
-                <a href="/register" class="register btn btn-outline-primary btn-sm">Register</a>
+                <a href="/login" class="login btn btn-outline-dark btn-md">Login</a>
+                <a href="/register" class="register btn btn-outline-dark btn-md">Register</a>
             </div><!--Login / Register-->
 
         </div>
+      </div>
+      <div class="small-screen-header">
+        <div class="row">
+        <div class="col-md-6">
+          <a href="" class="title"><img class="img-responsive" src="assets/img/logo3.png"></a>
+        </div><!--Title-->
+        <div class="col-md-6" *ngIf="authService.isAuthenticated()">
+          <a class="logout btn btn-outline-dark btn-sm" (click)="logout()">Logout</a>
+          <a href="/add-post" class="new-post btn btn-outline-dark btn-sm">Add Post</a>
+        </div><!-- Add post -->
+        <div class="col-md-6" *ngIf="!authService.isAuthenticated()">
+          <a href="/login" class="login btn btn-outline-dark btn-sm">Login</a>
+          <a href="/register" class="register btn btn-outline-dark btn-sm">Register</a>
+        </div><!--Login / Register-->
+        </div>
+      </div>
 
     </div>
 

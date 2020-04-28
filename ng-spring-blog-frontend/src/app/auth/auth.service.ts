@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {RegisterPayload} from './register-payload';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {LoginPayload} from './login-payload';
 import {JwtAuthResponse} from './jwt-auth-response';
-import {map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {LocalStorageService} from 'ngx-webstorage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +23,17 @@ export class AuthService {
 
   login(loginPayload: LoginPayload): Observable<boolean> {
     return this.httpClient.post<JwtAuthResponse>(this.url + 'login', loginPayload).pipe(map(data => {
-      this.localStorageService.store('authenticationToken', data.authenticationToken);
-      this.localStorageService.store('username', data.username);
-      return true;
+      if (data.authenticationToken) {
+        this.localStorageService.store('authenticationToken', data.authenticationToken);
+        this.localStorageService.store('username', data.username);
+        return true;
+      } else {
+        document.getElementById('login-failed').style.display = 'block';
+      }
+
     }));
   }
+
   // tslint:disable-next-line:ban-types
   isAuthenticated(): Boolean{
     return this.localStorageService.retrieve('username') != null;
@@ -36,4 +43,5 @@ export class AuthService {
     this.localStorageService.clear('authenticationToken');
     this.localStorageService.clear('username');
   }
+
 }
