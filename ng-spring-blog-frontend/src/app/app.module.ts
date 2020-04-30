@@ -20,6 +20,7 @@ import {AuthGuard} from './auth.guard';
 import { HeroComponent } from './hero/hero.component';
 import {Auth1Guard} from './auth1.guard';
 import { FooterComponent } from './footer/footer.component';
+import {PipesModule} from 'w-ng5';
 
 
 @NgModule({
@@ -32,10 +33,11 @@ import { FooterComponent } from './footer/footer.component';
     AddPostComponent,
     PostComponent,
     HeroComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
+    PipesModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

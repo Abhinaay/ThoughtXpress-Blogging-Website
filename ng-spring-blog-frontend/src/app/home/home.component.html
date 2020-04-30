@@ -1,11 +1,10 @@
 <div class="content">
   <div class="container">
-    <form class="search-form">
-      <input type="text" placeholder="Search By Author Name..." name="search">
-      <button type="submit" class="btn btn-outline-dark"><i class="fa fa-search"></i></button>
+    <form class="search-form" [formGroup]="searchForm">
+      <input type="text" [formControlName]="'name'" [(ngModel)]="search1" placeholder="Search By Author Name..." name="search">
     </form>
     <br>
-    <div class="row" *ngFor="let post of posts | async">
+    <div class="row" *ngFor="let post of posts | async | filter: [{field:'username', value: search1}]">
       <div class="blog-post card">
         <h3><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
         <div>

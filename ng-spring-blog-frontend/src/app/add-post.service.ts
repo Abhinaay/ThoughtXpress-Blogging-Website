@@ -23,4 +23,8 @@ export class AddPostService {
   getPost(permaLink: Number): Observable<PostPayload>{
     return this.httpClient.get<PostPayload>('http://localhost:8080/api/posts/get/' + permaLink);
   }
+
+  getSearchedPosts(name: string): Observable<Array<PostPayload>> {
+    return  this.httpClient.get<Array<PostPayload>>('http://localhost:8080/api/posts/get/username/' + name);
+  }
 }

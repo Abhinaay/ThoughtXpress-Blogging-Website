@@ -1,11 +1,15 @@
 package io.abhinay.springBlog.service;
 
 import java.time.Instant;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -24,8 +28,13 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepository;
 	
+	@Autowired
+	private UserDetailsService  userDetailsService;
+	
+	
 	public List<PostDto> showAllPosts() {
 		List<Post> posts=postRepository.findAll();
+		Collections.reverse(posts);
 		return posts.stream().map(this::mapFromPostToDto).collect(Collectors.toList());
 	}
 	
@@ -62,4 +71,5 @@ public class PostService {
 		 Post post=postRepository.findById(id).orElseThrow(()->new PostNotFoundException("For id "+id));
 		 return mapFromPostToDto(post);
 	}
+
 }

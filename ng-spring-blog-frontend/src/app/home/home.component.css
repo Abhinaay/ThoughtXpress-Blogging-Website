@@ -103,29 +103,9 @@ form.search-form input[type=text] {
   font-size: 17px;
   border: 1px solid grey;
   float: left;
-  width: 79.5%;
-  background: #f1f1f1;
+  width: 100%;
+  background: rgba(0,0,0,0);
   color: #2e3034;
-}
-
-/* Style the submit button */
-form.search-form button {
-  float: left;
-  width: 20.5%;
-  padding: 10px;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
-  border-radius: 0px;
-}
-
-form.search-form button:hover {
-  background: #1fc8db;
-  color: #f1f1f1;
-  transition: 0s;
-  border: none;
-  padding: 11px;
 }
 
 /* Clear floats */
@@ -134,6 +114,7 @@ form.search-form::after {
   clear: both;
   display: table;
 }
+
 @media screen and (max-width: 600px) {
 
 
