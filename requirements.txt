@@ -1,0 +1,3 @@
+npm install w-ng5 --save
+npm install jquery --save
+npm install ngx-bootstrap bootstrap@4.1.1
