@@ -62,6 +62,7 @@ a:hover, a:link, a:active, a:visited {
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+  margin-bottom: 15px;
 }
 
 .read-more span {

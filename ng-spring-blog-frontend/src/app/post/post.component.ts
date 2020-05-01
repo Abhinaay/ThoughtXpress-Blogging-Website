@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AddPostService} from '../add-post.service';
 import {PostPayload} from '../add-post/post-payload';
+import {LocalStorageService} from 'ngx-webstorage';
 
 
 function myFunction() {
@@ -22,7 +23,9 @@ export class PostComponent implements OnInit {
   // tslint:disable-next-line:ban-types
   permaLink: Number;
   post: PostPayload;
-  constructor(private router: ActivatedRoute, private postService: AddPostService) { }
+  constructor(private router: ActivatedRoute,
+              private postService: AddPostService,
+              private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
 
@@ -41,5 +44,24 @@ export class PostComponent implements OnInit {
   }
 
 
+  isUserAuthenticated() {
+    if (this.localStorageService.retrieve('username') === this.post.username)
+    {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
+  deletePost() {
+    this.postService.deletePost(this.permaLink).subscribe(data => {
+      if (data) {
+       console.log('Post Deleted Successfully!!');
+      }
+      else {
+        console.log('Post Deletion Failed!!');
+      }
+    });
+  }
 }

@@ -61,3 +61,28 @@
     font-size: 4vw;
   }
 }
+
+/* Delete Post button */
+
+.delete {
+  position: fixed;
+  background: linear-gradient(45deg,  rgba(0, 0, 0, 0.8) ,rgba(0, 0, 0, 0.3));
+  color: #fff;
+  padding: 8px 20px 8px 20px;
+  font-size: 16px;
+  border-radius: 4px 4px 0 0;
+  right: 112px;
+  bottom: 0;
+  transition: none;
+}
+
+.delete:focus {
+  background: linear-gradient(45deg,  rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3));
+  color: #fff;
+  outline: none;
+}
+
+.delete:hover {
+  background: rgba(180, 0, 0, 0.8);
+  color: #fff;
+}

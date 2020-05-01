@@ -44,4 +44,9 @@ public class PostController {
 		return new ResponseEntity<>(postService.readSinglePost(id), HttpStatus.OK);
 	}
 	
+	@GetMapping("/delete/id/{id}")
+	public ResponseEntity<Boolean> deleteSinglePost(@PathVariable @RequestBody Long id) {
+		return new ResponseEntity<>(new Boolean(postService.deleteSinglePost(id)), HttpStatus.OK);
+	}
+	
 }

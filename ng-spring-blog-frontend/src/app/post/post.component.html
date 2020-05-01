@@ -13,8 +13,15 @@
         <hr>
         <p class="post-content" [innerHTML]="post.content" ></p>
         <hr>
+        <!--
+        <div>
+          <button class="btn btn-outline-danger btn-block">Delete Post</button>
+        </div>
+        <hr>
+        -->
       </div>
     </div>
   </div>
   <a href="/home" class="back-to-home"><span>HOME</span></a>
+  <a href="" *ngIf="isUserAuthenticated()" class="delete" (click)="deletePost()"><span>DELETE POST</span></a>
 </div>

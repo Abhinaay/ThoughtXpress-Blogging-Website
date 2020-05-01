@@ -24,7 +24,8 @@ export class AddPostService {
     return this.httpClient.get<PostPayload>('http://localhost:8080/api/posts/get/' + permaLink);
   }
 
-  getSearchedPosts(name: string): Observable<Array<PostPayload>> {
-    return  this.httpClient.get<Array<PostPayload>>('http://localhost:8080/api/posts/get/username/' + name);
+  // tslint:disable-next-line:ban-types
+  deletePost(permaLink: Number): Observable<boolean> {
+    return this.httpClient.get<boolean>('http://localhost:8080/api/posts/delete/id/' + permaLink);
   }
 }

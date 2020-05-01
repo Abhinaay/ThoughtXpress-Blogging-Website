@@ -72,4 +72,16 @@ public class PostService {
 		 return mapFromPostToDto(post);
 	}
 
+	public boolean deleteSinglePost(Long id) {
+		if(id == null)
+			return false;
+		try {
+			postRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+
 }
