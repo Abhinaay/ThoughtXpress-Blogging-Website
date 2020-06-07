@@ -6,6 +6,8 @@ import {LoginPayload} from './login-payload';
 import {JwtAuthResponse} from './jwt-auth-response';
 import {catchError, map} from 'rxjs/operators';
 import {LocalStorageService} from 'ngx-webstorage';
+import {ForgotPayload} from '../forgot-password/forgot-payload';
+
 
 
 @Injectable({
@@ -44,4 +46,7 @@ export class AuthService {
     this.localStorageService.clear('username');
   }
 
+  sendemail(fPPayload: ForgotPayload): Observable<string> {
+    return this.httpClient.post<string>(this.url + 'sendemail', fPPayload);
+  }
 }

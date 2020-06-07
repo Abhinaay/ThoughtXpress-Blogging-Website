@@ -21,6 +21,8 @@ import { HeroComponent } from './hero/hero.component';
 import {Auth1Guard} from './auth1.guard';
 import { FooterComponent } from './footer/footer.component';
 import {PipesModule} from 'w-ng5';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {PipesModule} from 'w-ng5';
     AddPostComponent,
     PostComponent,
     HeroComponent,
-    FooterComponent
+    FooterComponent,
+    ForgotPasswordComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,8 @@ import {PipesModule} from 'w-ng5';
       {path: 'post/:id', component: PostComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent, canActivate: [Auth1Guard]},
       {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+      {path: 'forgot-password', component: ForgotPasswordComponent},
+      {path: 'new-password', component: NewPasswordComponent},
       {path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard]}
     ]),
     HttpClientModule,

@@ -1,6 +1,9 @@
 .content {
-  background: linear-gradient(180deg, #f1f1f1 0%, #1fc8db 51%, #f1f1f1 85%);
+  /*background: linear-gradient(180deg, #f1f1f1 0%, #1fc8db 51%, #f1f1f1 85%);*/
+  background: #f1f1f1;
 }
+
+
 
 .blog-title {
   margin-top: 5vh;

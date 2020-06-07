@@ -17,6 +17,7 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
   margin-top: 2vh;
+  width: 100%;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -48,7 +49,8 @@ a:hover, a:link, a:active, a:visited {
 }
 
 .post-data {
-  height: 600px;
+  min-height: auto;
+  max-height: 600px;
   overflow: hidden;
 }
 
