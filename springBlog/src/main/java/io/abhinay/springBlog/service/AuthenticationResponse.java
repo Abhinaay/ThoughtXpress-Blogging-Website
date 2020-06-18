@@ -10,6 +10,13 @@ public class AuthenticationResponse {
 	private String authenticationToken;
 	private String username;
 	private boolean status;
+	
+	
+	public AuthenticationResponse()
+	{
+		
+	}
+	
 	public boolean isStatus() {
 		return status;
 	}

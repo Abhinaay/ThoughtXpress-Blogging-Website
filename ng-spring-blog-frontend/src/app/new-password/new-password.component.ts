@@ -4,6 +4,7 @@ import {RegisterPayload} from '../auth/register-payload';
 import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
+import {DynamicLoaderService} from 'angular-dynamic-loader';
 
 @Component({
   selector: 'app-new-password',
@@ -21,7 +22,8 @@ export class NewPasswordComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router) {
+    private router: Router,
+    private loader: DynamicLoaderService) {
 
     this.show = false;
     this.registerForm = this.formBuilder.group({
@@ -46,10 +48,11 @@ export class NewPasswordComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.loader.show();
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+      this.loader.hide();
       return;
     }
     this.registerPayload.username = this.registerForm.get('username').value;
@@ -59,6 +62,7 @@ export class NewPasswordComponent implements OnInit {
     this.authService.register(this.registerPayload).subscribe(data => {
       if (data === 0) {
         console.log('register success');
+        this.loader.hide();
         $(document).ready(($function) => {
           setTimeout(() => {
             this.router.navigateByUrl('/hero');
@@ -69,9 +73,11 @@ export class NewPasswordComponent implements OnInit {
       else if (data === 1) {
         console.log('Username Not Available');
         document.getElementById('error4').style.display = 'block';
+        this.loader.hide();
       }
       else {
         console.log('register failed');
+        this.loader.hide();
       }
     });
   }

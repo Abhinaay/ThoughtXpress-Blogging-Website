@@ -88,11 +88,12 @@
 
 
   .login {
-    float: right;
+    float: left;
     color: #2e3034;
     text-decoration: none;
     font-weight: bolder;
     margin-top: 1.5vh;
+    width: 48%;
   }
 
 
@@ -102,7 +103,25 @@
     text-decoration: none;
     font-weight: bolder;
     margin-top: 1.5vh;
-    margin-right: 10px;
+    margin-right: 0px;
+    width: 48%;
+  }
+
+  .logout {
+    float: left;
+    color: #2e3034;
+    font-weight: bolder;
+    margin-top: 1.5vh;
+    width: 48%;
+
+  }
+  .new-post {
+    float: right;
+    color: #2e3034;
+    font-weight: bolder;
+    margin-top: 1.5vh;
+    width: 48%;
+    margin-right: 0px;
   }
 }
 

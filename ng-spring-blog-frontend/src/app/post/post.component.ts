@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AddPostService} from '../add-post.service';
 import {PostPayload} from '../add-post/post-payload';
 import {LocalStorageService} from 'ngx-webstorage';
+import {DynamicLoaderService} from 'angular-dynamic-loader';
 
 
 function myFunction() {
@@ -25,10 +26,11 @@ export class PostComponent implements OnInit {
   post: PostPayload;
   constructor(private router: ActivatedRoute,
               private postService: AddPostService,
-              private localStorageService: LocalStorageService) { }
+              private localStorageService: LocalStorageService,
+              private loader: DynamicLoaderService) { }
 
   ngOnInit() {
-
+    this.loader.show();
     // tslint:disable-next-line:only-arrow-functions
     window.onscroll = function() {myFunction(); };
 
@@ -38,8 +40,10 @@ export class PostComponent implements OnInit {
 
     this.postService.getPost(this.permaLink).subscribe((data: PostPayload) => {
       this.post = data;
+      this.loader.hide();
     }, (err: any) => {
       console.log('Failure Response');
+      this.loader.hide();
     });
   }
 
@@ -55,12 +59,15 @@ export class PostComponent implements OnInit {
   }
 
   deletePost() {
+    this.loader.show();
     this.postService.deletePost(this.permaLink).subscribe(data => {
       if (data) {
        console.log('Post Deleted Successfully!!');
+       this.loader.hide();
       }
       else {
         console.log('Post Deletion Failed!!');
+        this.loader.hide();
       }
     });
   }

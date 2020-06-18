@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LoginPayload} from '../login-payload';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
+import { DynamicLoaderService } from 'angular-dynamic-loader';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   loginPayload: LoginPayload;
   submitted: boolean;
   show: boolean;
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private loader: DynamicLoaderService) {
     this.show = false;
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
@@ -37,9 +38,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loader.show();
     this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      this.loader.hide();
       return;
     }
     this.loginPayload.username = this.loginForm.get('username').value;
@@ -48,11 +51,14 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginPayload).subscribe(data => {
       if (data) {
         console.log('login Success');
+        this.loader.hide();
         this.router.navigateByUrl('/home');
       }else {
         console.log('login Failure');
+        this.loader.hide();
       }
     });
+
   }
 
   password() {

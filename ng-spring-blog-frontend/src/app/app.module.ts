@@ -7,7 +7,6 @@ import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {setupTestingRouter} from '@angular/router/testing';
 import {RouterModule} from '@angular/router';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Ng2Webstorage} from 'ngx-webstorage';
@@ -23,6 +22,9 @@ import { FooterComponent } from './footer/footer.component';
 import {PipesModule} from 'w-ng5';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import {DynamicLoaderModule} from 'angular-dynamic-loader';
+
+
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import { NewPasswordComponent } from './new-password/new-password.component';
       {path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard]}
     ]),
     HttpClientModule,
-    EditorModule
+    EditorModule,
+    DynamicLoaderModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true}],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DynamicLoaderService} from 'angular-dynamic-loader';
+
 
 @Component({
   selector: 'app-hero',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loader: DynamicLoaderService) { }
 
   ngOnInit(): void {
+    this.loader.show();
+    setTimeout(() => {
+      /** spinner ends after 3 seconds */
+      this.loader.hide();
+    }, 3000);
   }
 
 }

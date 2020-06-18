@@ -21,6 +21,8 @@
         <div class="col-md-6">
           <a href="" class="title"><img class="img-responsive" src="assets/img/logo3.png"></a>
         </div><!--Title-->
+        </div>
+        <div class="row">
         <div class="col-md-6" *ngIf="authService.isAuthenticated()">
           <a class="logout btn btn-outline-dark btn-sm" (click)="logout()">Logout</a>
           <a href="/add-post" class="new-post btn btn-outline-dark btn-sm">Add Post</a>

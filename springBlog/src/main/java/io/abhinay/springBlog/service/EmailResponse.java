@@ -9,6 +9,10 @@ public class EmailResponse {
 	
 	private String message;
 	
+	public EmailResponse()
+	{
+		
+	}
 	
 	public String getMessage() {
 		return message;

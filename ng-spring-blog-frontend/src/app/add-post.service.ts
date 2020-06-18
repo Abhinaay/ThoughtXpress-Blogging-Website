@@ -12,20 +12,20 @@ export class AddPostService {
   constructor(private httpClient: HttpClient) { }
 
   addPost(postPayload: PostPayload) {
-    return this.httpClient.post('http://localhost:8080/api/posts/create', postPayload);
+    return this.httpClient.post('https://spring-blog-backend.herokuapp.com/api/posts/create', postPayload);
   }
 
   getAllPosts(): Observable<Array<PostPayload>>{
-    return this.httpClient.get<Array<PostPayload>>('http://localhost:8080/api/posts/all');
+    return this.httpClient.get<Array<PostPayload>>('https://spring-blog-backend.herokuapp.com/api/posts/all');
   }
 
   // tslint:disable-next-line:ban-types
   getPost(permaLink: Number): Observable<PostPayload>{
-    return this.httpClient.get<PostPayload>('http://localhost:8080/api/posts/get/' + permaLink);
+    return this.httpClient.get<PostPayload>('https://spring-blog-backend.herokuapp.com/api/posts/get/' + permaLink);
   }
 
   // tslint:disable-next-line:ban-types
   deletePost(permaLink: Number): Observable<boolean> {
-    return this.httpClient.get<boolean>('http://localhost:8080/api/posts/delete/id/' + permaLink);
+    return this.httpClient.get<boolean>('https://spring-blog-backend.herokuapp.com/api/posts/delete/id/' + permaLink);
   }
 }

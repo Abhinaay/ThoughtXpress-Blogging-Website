@@ -11,6 +11,7 @@ import io.abhinay.springBlog.model.User;
 @Service
 public class MailService {
 	
+
 	private JavaMailSender javaMailSender;
 
 	@Autowired
